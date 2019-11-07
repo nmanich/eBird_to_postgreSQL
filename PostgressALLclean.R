@@ -1,8 +1,7 @@
-
 library(tidyverse)
 
 
-#read in download from ebird, change this to your file name
+#read in download from ebird
 ebird <- read.delim("ebd_US-WI_rehwoo_199501_200012_relSep-2019.txt", sep="\t", header=TRUE, quote = "", stringsAsFactors = FALSE, na.strings=c(""))
 
 #this removes dots from column names, which were spaces
@@ -18,7 +17,7 @@ ebirdforobs[is.na(ebirdforobs)] <- " "
 ebirdforobs
 
 #this selects specific columns for obs
-obs <- ebirdforobs[,c(1,5,9,10,12,30,42,43,44,46)]
+obs <- ebirdforobs[,c(1,5,9,10,12,24,30,31,42,43,44,46)]
 
 #export file to csv
 write.csv(obs, file = "obs.csv", row.names=FALSE)
@@ -61,7 +60,7 @@ nowwithfewersubs
 #export file to csv
 write.csv(nowwithfewersubs, file = "sub.csv", row.names=FALSE)
 
-### BIRD
+### BRD
 
 #this selects specific columns for bird
 bird <- ebird[,c(3, 4, 5, 6, 7, 8)]
@@ -79,7 +78,7 @@ nowwithfewerbirds[is.na(nowwithfewerbirds)] <- " "
 nowwithfewerbirds
 
 #export file to csv
-write.csv(nowwithfewerbirds, file = "bird.csv", row.names=FALSE)
+write.csv(nowwithfewerbirds, file = "brd.csv", row.names=FALSE)
 
 
 
