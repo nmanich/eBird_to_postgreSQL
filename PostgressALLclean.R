@@ -1,7 +1,7 @@
 library(tidyverse)
 
 
-#read in download from ebird
+#read in download from ebird, change this to your file name
 ebird <- read.delim("ebd_US-WI_rehwoo_199501_200012_relSep-2019.txt", sep="\t", header=TRUE, quote = "", stringsAsFactors = FALSE, na.strings=c(""))
 
 #this removes dots from column names, which were spaces
