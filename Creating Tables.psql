@@ -13,15 +13,17 @@ These are the structures of the table: column name, then data type, and constrai
 
 CREATE TABLE OBS (
 GLOBALUNIQUEIDENTIFIER VARCHAR(50) NOT NULL PRIMARY KEY,
-COMMONNAME VARCHAR(70),
+COMMONNAME VARCHAR(70) NOT NULL,
 OBSERVATIONCOUNT VARCHAR(10),
 BREEDINGBIRDATLASCODE VARCHAR(2),
-AGESEX VARCHAR(50),
-OBSERVERID VARCHAR(15),
+AGESEX VARCHAR(100),
+LOCALITYID VARCHAR(10) NOT NULL,
+OBSERVERID VARCHAR(15) NOT NULL,
+SAMPLINGEVENTIDENTIFIER VARCHAR(15) NOT NULL,
 APPROVED INT,
 REVIEWED INT,
 REASON VARCHAR(10),
-SPECIES_COMMENTS VARCHAR(500));
+SPECIES_COMMENTS VARCHAR);
 
 CREATE TABLE LOC (
 GLOBALUNIQUEIDENTIFIER VARCHAR(50) NOT NULL,
@@ -41,12 +43,12 @@ LATITUDE NUMERIC,
 LONGITUDE NUMERIC);
 
 CREATE TABLE SUB ( 
-GLOBALUNIQUEIDENTIFIER VARCHAR(50),
+GLOBALUNIQUEIDENTIFIER VARCHAR(50) NOT NULL,
 OBSERVATIONDATE VARCHAR(20),
 TIMEOBSERVATIONSSTARTED VARCHAR(20),
 OBSERVERID VARCHAR(15),
 SAMPLINGEVENTIDENTIFIER VARCHAR(15) NOT NULL PRIMARY KEY,
-PROTOCOLTYPE CHAR(25),
+PROTOCOLTYPE CHAR(50),
 PROJECTCODE VARCHAR(25),
 DURATIONMINUTES VARCHAR(25),
 EFFORTDISTANCEKM VARCHAR(25),
@@ -56,7 +58,7 @@ ALLSPECIESREPORTED INT,
 GROUPIDENTIFIER VARCHAR(15),
 TRIPCOMMENTS VARCHAR);
 
-CREATE TABLE BIRD (
+CREATE TABLE BRD (
 TAXONOMICORDER INT,
 CATEGORY VARCHAR(25),
 COMMONNAME VARCHAR(75) NOT NULL PRIMARY KEY,
@@ -66,38 +68,25 @@ SUBSPECIESSCIENTITICNAME VARCHAR(100));
 
 --user info not available in download, request from ebird central
 
-CREATE TABLE USER (
+CREATE TABLE USR (
 EMAIL VARCHAR(50),
 LASTNAME VARCHAR(50),
 FIRSTNAME VARCHAR(50), 
 OBSERVERID VARCHAR(15) NOT NULL PRIMARY KEY);
 
+-- this fixes some character encoding issues
+SET CLIENT_ENCODING TO 'utf8';
+
 /* 
-This populates the tables with data. Change path to the proper files. In order for the program to be allowed accuess, you need to find file, then go to: properties, security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone. Second word below is the name of the table we are copying into. These csv files are created from the eBird download with the R code, except for user which is prepared separately.
+This populates the tables with data. Change path to the proper files. In order for the program to be allowed access, you need to find file, then go to: properties, security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone. Second word below is the name of the table we are copying into. These csv files are created from the eBird download with the R code, except for user which is prepared separately.
 */
  
-COPY OBS FROM 'C:\Users\nicho\Desktop\infographic\obs.csv' DELIMITER ',' CSV HEADER;
+COPY OBS FROM 'C:\Users\nicho\Desktop\testdatabase2\obs.csv' DELIMITER ',' CSV HEADER;
 
-COPY LOC FROM 'C:\Users\nicho\Desktop\infographic\loc.csv' DELIMITER ',' CSV HEADER;
+COPY LOC FROM 'C:\Users\nicho\Desktop\testdatabase2\loc.csv' DELIMITER ',' CSV HEADER;
 
-COPY SUB FROM 'C:\Users\nicho\Desktop\infographic\sub.csv' DELIMITER ',' CSV HEADER;
+COPY SUB FROM 'C:\Users\nicho\Desktop\testdatabase2\sub.csv' DELIMITER ',' CSV HEADER;
 
-COPY BIRD FROM 'C:\Users\nicho\Desktop\infographic\bird.csv' DELIMITER ',' CSV HEADER;
+COPY BRD FROM 'C:\Users\nicho\Desktop\testdatabase2\brd.csv' DELIMITER ',' CSV HEADER;
 
-COPY USER FROM 'C:\Users\nicho\Desktop\infographic\user.csv' DELIMITER ',' CSV HEADER;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+COPY USR FROM 'C:\Users\nicho\Desktop\testdatabase2\usr.csv' DELIMITER ',' CSV HEADER;
