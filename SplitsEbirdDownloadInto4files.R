@@ -17,7 +17,7 @@ ebirdforobs[is.na(ebirdforobs)] <- " "
 ebirdforobs
 
 #this selects specific columns for obs
-obs <- ebirdforobs[,c(1,5,9,10,12,24,30,31,42,43,44,46)]
+obs <- ebirdforobs[,c(1,2,5,9,10,11,12,24,30,31,41,42,43,44,46)]
 
 #export file to csv
 write.csv(obs, file = "obs.csv", row.names=FALSE)
@@ -25,7 +25,7 @@ write.csv(obs, file = "obs.csv", row.names=FALSE)
 ### LOC
 
 #this selects specific columns for loc
-loc <- ebird[,c(1, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27)]
+loc <- ebird[,c(1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27)]
 
 #convert to tibble
 loctib <- as_tibble(loc)
@@ -44,7 +44,7 @@ write.csv(nowwithfewer, file = "loc.csv", row.names=FALSE)
 ### SUB
 
 #this selects specific columns for sub
-sub <- ebird[,c(1, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 45)]
+sub <- ebird[,c(1, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 45)]
 
 #convert to tibble
 subtib <- as_tibble(sub)
@@ -71,7 +71,6 @@ birdtib <- as_tibble(bird)
 #remove rows with duplicated birds, leaving a file with only unique common names
 nowwithfewerbirds <- birdtib[!duplicated(birdtib$COMMONNAME), ]
 
-#This was causing trouble with single species run, but should work with normal data I think
 #change NAs to blanks 
 nowwithfewerbirds <- sapply(nowwithfewerbirds, as.character)
 nowwithfewerbirds[is.na(nowwithfewerbirds)] <- " "
@@ -79,7 +78,3 @@ nowwithfewerbirds
 
 #export file to csv
 write.csv(nowwithfewerbirds, file = "brd.csv", row.names=FALSE)
-
-
-
-
