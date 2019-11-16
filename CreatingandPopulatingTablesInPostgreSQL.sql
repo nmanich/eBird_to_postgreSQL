@@ -78,9 +78,11 @@ last_name VARCHAR(50),
 first_name VARCHAR(50), 
 observer_id VARCHAR(15) NOT NULL PRIMARY KEY);
 
---nocturnal table, request from ebird central
+-- add nocturnal table, request from ebird central
 
---hiddenrecords, request from ebird central
+-- add hiddenrecords, request from ebird central
+                                   
+-- add taxonomy (optional, brings in sort by taxon option or use of 6-letter code as better key for birds)
 
 -- this fixes some character encoding issues
 SET CLIENT_ENCODING TO 'utf8';
