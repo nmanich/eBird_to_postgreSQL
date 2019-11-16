@@ -11,3 +11,5 @@ Currently there are 4 files here
 3. The third file (Creating...) contains code to create these 5 tables in PostgreSQL, and then populate those tables with the data from the tables you made in step 1.
 
 4. The fourth file (Query...) contains a query that can reassemble the EBD. You can modify this code as part of more specific queries to select a subset of the database.
+
+![erd](https://github.com/ngwalton/wbba_tools/blob/master/erd.bmp)
