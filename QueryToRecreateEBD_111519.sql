@@ -1,9 +1,9 @@
 /* 
---The SELECT code identifies columns in the table (you can delete columns not needed - this is a master list that essentially recreates the EBD.)
---The FROM and JOIN statements join the other tables in with their matching columns.
---The COPY part outside parentheses exports to csv.
---You can add additional query language to pull specific things out.
-*/
+ * The SELECT code identifies columns in the table (you can delete columns not needed - this is a master list that essentially recreates the EBD.)
+ * The FROM and JOIN statements join the other tables in with their matching columns.
+ * The COPY part outside parentheses exports to csv.
+ * You can add additional query language to pull specific things out.
+ */
 
 COPY (
 SELECT  
