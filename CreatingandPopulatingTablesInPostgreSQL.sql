@@ -7,8 +7,8 @@ CREATE DATABASE test3;
 \c test3
 
 /*  
-These are the structures of the table: column name, then data type, and constraints. Use the R code to split the eBird download into 4 csv files that will get loaded into these tables after they are created. Note: Codes that should techically be a different type but I moved to varchar for now because nulls were messing it up include bcrcode, reason, durationminutes, numberobservers, effortdistkm, effortareaha.
-*/
+ * These are the structures of the table: column name, then data type, and constraints. Use the R code to split the eBird download into 4 csv files that will get loaded into these tables after they are created. Note: Codes that should techically be a different type but I moved to varchar for now because nulls were messing it up include bcrcode, reason, durationminutes, numberobservers, effortdistkm, effortareaha.
+ */
 
 CREATE TABLE obs (
 global_unique_identifier VARCHAR(50) NOT NULL PRIMARY KEY,
@@ -86,8 +86,8 @@ observer_id VARCHAR(15) NOT NULL PRIMARY KEY);
 SET CLIENT_ENCODING TO 'utf8';
 
 /* 
-This populates the tables with data. Change path to the proper files. In order for the program to be allowed access, you need to find file or folder, then go to: properties, security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone. Second word below is the name of the table we are copying into. These csv files are created from the eBird download with the R code, except for user which is prepared separately.
-*/
+ * This populates the tables with data. Change path to the proper files. In order for the program to be allowed access, you need to find file or folder, then go to: properties, security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone. Second word below is the name of the table we are copying into. These csv files are created from the eBird download with the R code, except for user which is prepared separately.
+ */
  
 COPY OBS FROM 'C:\Users\nicho\Desktop\testdatabase3\obs.csv' DELIMITER ',' CSV HEADER;
 
