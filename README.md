@@ -12,4 +12,4 @@ Currently there are 4 files here
 
 4. The fourth file (Query...) contains a query that can reassemble the EBD. You can modify this code as part of more specific queries to select a subset of the database.
 
-![erd](https://github.com/ngwalton/wbba_tools/blob/master/erd.bmp)
+![erd](https://github.com/nmanich/eBird_to_postgreSQL/blob/master/ERD.bmp)
