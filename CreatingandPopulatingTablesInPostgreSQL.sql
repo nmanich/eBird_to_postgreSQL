@@ -7,7 +7,7 @@ CREATE DATABASE test3;
 \c test3
 
 /*  
- * These are the structures of the table: column name, then data type, and constraints. Use the R code to split the eBird download into 4 csv files that will get loaded into these tables after they are created. Note: Codes that should techically be a different type but I moved to varchar for now because nulls were messing it up include bcrcode, reason, durationminutes, numberobservers, effortdistkm, effortareaha.
+ * These are the structures of the table: column name, then data type, and constraints. Use the R code to split the eBird download into 4 csv files that will get loaded into these tables after they are created. Note: Codes that should techically be a different type but I moved to varchar for now because nulls were messing it up include durationminutes, numberobservers, effortdistkm, effortareaha.
  */
 
 CREATE TABLE obs (
