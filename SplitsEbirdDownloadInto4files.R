@@ -1,6 +1,5 @@
 library(tidyverse)
 
-
 #read in download from ebird, change this to your file name
 ebird <- read.delim("ebd_US-WI_rehwoo_199501_200012_relSep-2019.txt", sep="\t", header=TRUE, quote = "", stringsAsFactors = FALSE, na.strings=c(""))
 
@@ -33,11 +32,6 @@ loctib <- as_tibble(loc)
 #remove rows with duplicated locations, leaving a file with only unique locations
 nowwithfewer <- loctib[!duplicated(loctib$LOCALITYID), ]
 
-#change NAs to blanks 
-nowwithfewer <- sapply(nowwithfewer, as.character)
-nowwithfewer[is.na(nowwithfewer)] <- " "
-nowwithfewer
-
 #export file to csv
 write.csv(nowwithfewer, file = "loc.csv", row.names=FALSE)
 
@@ -52,11 +46,6 @@ subtib <- as_tibble(sub)
 #remove rows with duplicated checklists, leaving a file with only unique checklists
 nowwithfewersubs <- subtib[!duplicated(subtib$SAMPLINGEVENTIDENTIFIER), ]
 
-#change NAs to blanks 
-nowwithfewersubs <- sapply(nowwithfewersubs, as.character)
-nowwithfewersubs[is.na(nowwithfewersubs)] <- " "
-nowwithfewersubs
-
 #export file to csv
 write.csv(nowwithfewersubs, file = "sub.csv", row.names=FALSE)
 
@@ -70,11 +59,6 @@ birdtib <- as_tibble(bird)
 
 #remove rows with duplicated birds, leaving a file with only unique common names
 nowwithfewerbirds <- birdtib[!duplicated(birdtib$COMMONNAME), ]
-
-#change NAs to blanks 
-nowwithfewerbirds <- sapply(nowwithfewerbirds, as.character)
-nowwithfewerbirds[is.na(nowwithfewerbirds)] <- " "
-nowwithfewerbirds
 
 #export file to csv
 write.csv(nowwithfewerbirds, file = "brd.csv", row.names=FALSE)
