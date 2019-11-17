@@ -1,18 +1,18 @@
- --this makes a database called test3
+--this makes a database called test5
 
-CREATE DATABASE test3;
+CREATE DATABASE test5;
 
---this command connects to the database called test3
+--this command connects to the database called test5
 
-\c test3
+\c test5
 
 /*  
- * These are the structures of the table: column name, then data type, and constraints. Use the R code to split the eBird download into 4 csv files that will get loaded into these tables after they are created. Note: Codes that should techically be a different type but I moved to varchar for now because nulls were messing it up include durationminutes, numberobservers, effortdistkm, effortareaha.
+ * These are the structures of the table: column name, then data type, and constraints.  * Use the R code to split the eBird download into 4 csv files that will get loaded into  * these tables after they are created. 
  */
 
 CREATE TABLE obs (
 global_unique_identifier VARCHAR(50) NOT NULL PRIMARY KEY,
-last_edited_date VARCHAR(50),
+last_edited_date TIMESTAMP,
 common_name VARCHAR(70) NOT NULL,
 observation_count VARCHAR(10),
 breeding_bird_atlas_code VARCHAR(2),
@@ -47,17 +47,17 @@ longitude DECIMAL(8,5));
 
 CREATE TABLE sub ( 
 global_unique_identifier  VARCHAR(50) NOT NULL,
-observation_date VARCHAR(20),
-time_observations_started VARCHAR(20),
+observation_date DATE,
+time_observations_started TIME,
 observer_id VARCHAR(15),
 sampling_event_identifier VARCHAR(15) NOT NULL PRIMARY KEY,
 protocol_type VARCHAR(50),
 protocol_code CHAR (3),
 project_code VARCHAR(25),
-duration_minutes VARCHAR(25),
-effort_distance_km VARCHAR(25),
-effort_area_ha VARCHAR(25),
-number_observers VARCHAR(25),
+duration_minutes SMALLINT,
+effort_distance_km DECIMAL(8,3),
+effort_area_ha DECIMAL(8,3),
+number_observers SMALLINT,
 all_species_reported BOOLEAN,
 group_identifier VARCHAR(15),
 trip_comments VARCHAR);
@@ -88,15 +88,16 @@ observer_id VARCHAR(15) NOT NULL PRIMARY KEY);
 SET CLIENT_ENCODING TO 'utf8';
 
 /* 
- * This populates the tables with data. Change path to the proper files. In order for the program to be allowed access, you need to find file or folder, then go to: properties, security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone. Second word below is the name of the table we are copying into. These csv files are created from the eBird download with the R code, except for user which is prepared separately.
+ * This populates the tables with data. Change path to the proper files. In order for the   * program to be allowed access, you need to find file or folder, then go to: properties,   * security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone.   * Second word below is the name of the table we are copying into. These csv files are    * created from the eBird download with the R code, except for user which is prepared    * separately.
  */
  
-COPY OBS FROM 'C:\Users\nicho\Desktop\testdatabase3\obs.csv' DELIMITER ',' CSV HEADER;
+COPY OBS FROM 'C:\Users\nicho\Desktop\testdatabase5\obs.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
-COPY LOC FROM 'C:\Users\nicho\Desktop\testdatabase3\loc.csv' DELIMITER ',' CSV HEADER;
+COPY LOC FROM 'C:\Users\nicho\Desktop\testdatabase5\loc.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
-COPY SUB FROM 'C:\Users\nicho\Desktop\testdatabase3\sub.csv' DELIMITER ',' CSV HEADER;
+COPY SUB FROM 'C:\Users\nicho\Desktop\testdatabase5\sub.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
-COPY BRD FROM 'C:\Users\nicho\Desktop\testdatabase3\brd.csv' DELIMITER ',' CSV HEADER;
+COPY BRD FROM 'C:\Users\nicho\Desktop\testdatabase5\brd.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
-COPY USR FROM 'C:\Users\nicho\Desktop\testdatabase3\usr.csv' DELIMITER ',' CSV HEADER;
+COPY USR FROM 'C:\Users\nicho\Desktop\testdatabase5\usr.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
+
