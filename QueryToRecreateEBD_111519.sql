@@ -57,9 +57,10 @@ SELECT
 	usr.last_name,
 	usr.first_name,
 	sub.trip_comments,
-	obs.species_comments
+	obs.species_comments,
+	noc.is_noc
 
-FROM     obs LEFT JOIN loc
+FROM obs LEFT JOIN loc
             ON obs.locality_id = loc.locality_id
           
 LEFT JOIN usr
