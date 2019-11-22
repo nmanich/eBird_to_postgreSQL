@@ -2,10 +2,10 @@
  * The SELECT code identifies columns in the table (you can delete columns not needed - this is a master list that essentially recreates the EBD.)
  * The FROM and JOIN statements join the other tables in with their matching columns.
  * The COPY part outside parentheses exports to csv.
- * You can add additional query language to pull specific things out.
+ * The WHERE part is your specific query of the data.
  */
  
- SET CLIENT_ENCODING TO 'utf8';
+SET CLIENT_ENCODING TO 'utf8';
 
 COPY (
 SELECT  
@@ -62,7 +62,6 @@ SELECT
 
 FROM obs LEFT JOIN loc
             ON obs.locality_id = loc.locality_id
-          
 LEFT JOIN usr
             ON obs.observer_id = usr.observer_id          
 LEFT JOIN sub
