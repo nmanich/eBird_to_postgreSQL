@@ -67,8 +67,15 @@ LEFT JOIN usr
 LEFT JOIN sub
             ON obs.sampling_event_identifier = sub.sampling_event_identifier    
 LEFT JOIN brd
-            ON obs.common_name = brd.common_name           
+            ON obs.common_name = brd.common_name
+	
+--optional inclusion of nocturnal tag	
+LEFT JOIN noc   
+	    ON obs.sampling_event_identifier = noc.sampling_event_identifier
+	
 )
+
+--specify output location and name you want for output file here
 TO 'C:\Users\nicho\Desktop\testdatabase3\2018atlasdata.csv'
 WITH (FORMAT CSV, HEADER, DELIMITER ',');
 
