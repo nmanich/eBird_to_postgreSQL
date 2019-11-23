@@ -1,3 +1,4 @@
+--This selects all the records that are coded in other portals (currently set to all portals except atlas wisconsin)
 
 SET CLIENT_ENCODING TO 'utf8';
 
