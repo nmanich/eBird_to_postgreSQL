@@ -8,6 +8,8 @@
  * The COPY part outside parentheses exports to csv.
  * You can add additional query language to pull specific things out.
  */
+ 
+ SET CLIENT_ENCODING TO 'utf8';
 
 COPY (
 SELECT  
