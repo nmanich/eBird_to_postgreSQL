@@ -1,3 +1,7 @@
+/* As written this essentially rebuids the EBD (eBird Database) original download file. I am using this like a master query
+ * because it joins the major tables. You should be able to delete columns from this that you do not need.
+ */
+
 /* 
  * The SELECT code identifies columns in the table (you can delete columns not needed - this is a master list that essentially recreates the EBD.)
  * The FROM and JOIN statements join the other tables in with their matching columns.
@@ -67,6 +71,7 @@ LEFT JOIN sub
 LEFT JOIN brd
             ON obs.common_name = brd.common_name           
 )
+
 TO 'C:\Users\nicho\Desktop\testdatabase3\2018atlasdata.csv'
 WITH (FORMAT CSV, HEADER, DELIMITER ',');
 
