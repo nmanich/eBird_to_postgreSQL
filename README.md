@@ -1,6 +1,6 @@
 # eBird_to_postgreSQL
 
-Script to go from an eBird download into a PostgreSQL database. 
+*Script to go from an eBird download into a PostgreSQL database.* 
 
 The file (Splits...) takes your eBird download and splits it into 4 tables - OBS, SUB, LOC, and BRD. You can optionally add a fifth user table (if you get user info from eBird central).
 
