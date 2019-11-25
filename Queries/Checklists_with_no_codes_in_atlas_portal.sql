@@ -1,5 +1,6 @@
 
-This script exports out checklists with no code within the atlas portal.
+--This script exports out checklists with no code within the atlas portal.
+--I don't have script written to produce the codedstatus table, so for now for this function I'm using something under small R scripts.
 
 CREATE DATABASE portalouttest;
 
