@@ -1,5 +1,5 @@
 
---this makes a database called portalouttest
+This script exports out checklists with no code within the atlas portal.
 
 CREATE DATABASE portalouttest;
 
@@ -85,11 +85,10 @@ CREATE TABLE noc (
 sampling_event_identifier VARCHAR(15) NOT NULL PRIMARY KEY,
 is_noc VARCHAR(9));
 
---this is a new table for this script, adds a value for each observation indicating whether the checklist has any codes or not
+--this is a new table for this script. The column status has 2 values: UNCODED means the entire checklist has no code, and CODED means there is a code (above F) on the checklist
 CREATE TABLE codedstatus (
 global_unique_identifier VARCHAR(50) NOT NULL PRIMARY KEY,
 status VARCHAR(7));
-
                                 
 -- this fixes some character encoding issues
 SET CLIENT_ENCODING TO 'utf8';
@@ -111,7 +110,7 @@ COPY USR FROM 'C:\Users\nicho\Desktop\portalout\usr.csv' DELIMITER ',' CSV HEADE
 
 COPY NOC FROM 'C:\Users\nicho\Desktop\portalout\noc.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
---this is a new table for this query
+--this is a new table for this query, see above
 COPY CODEDSTATUS FROM 'C:\Users\nicho\Desktop\portalout\codedstatus.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 
