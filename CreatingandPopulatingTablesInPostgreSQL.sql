@@ -94,7 +94,8 @@ SET CLIENT_ENCODING TO 'utf8';
 /* 
 This populates the tables with data. Change path to the proper files. In order for the program to be allowed access, you need to find file or folder, then go to: properties, security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone. Second word below is the name of the table we are copying into. These csv files are  created from the eBird download with the R code, except for user which is prepared separately.
  */
- 
+
+--obs is the largest table so this next line can take quite a while to load if the file is large               
 COPY OBS FROM 'C:\Users\nicho\Desktop\testdatabase5\obs.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 COPY LOC FROM 'C:\Users\nicho\Desktop\testdatabase5\loc.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
