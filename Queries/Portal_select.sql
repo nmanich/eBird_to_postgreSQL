@@ -146,5 +146,4 @@ TO 'C:\Users\nicho\Desktop\testdatabase5\NONPORTALFROMPOST.csv'
 
 WITH (FORMAT CSV, HEADER, DELIMITER ',');
 
-
-SELECT COUNT(*) FROM obs;
+--ALTERNATIVELY FOR A TEXT FILE USE: TO 'C:\Users\nicho\Desktop\portalout\portalouttest5.txt';
