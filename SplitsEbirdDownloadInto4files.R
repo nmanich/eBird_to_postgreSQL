@@ -1,3 +1,5 @@
+#this can take a while to run (up to an hour for a decade of state level data)
+
 library(tidyverse)
 
 #read in download from ebird, change this to your file name
