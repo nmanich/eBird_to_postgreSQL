@@ -74,8 +74,8 @@ subpsecies_scientific_name VARCHAR(100));
 
 CREATE TABLE usr (
 email VARCHAR(50),
-last_name VARCHAR(50),
-first_name VARCHAR(50), 
+last_name VARCHAR(60),
+first_name VARCHAR(60), 
 observer_id VARCHAR(15) NOT NULL PRIMARY KEY);
 
 -- OPTIONAL NOCTURNAL TAGS ON CHECKLIST, request from ebird central
