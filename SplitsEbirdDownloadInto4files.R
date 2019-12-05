@@ -30,7 +30,7 @@ names(ebird) <- gsub("\\.", "", names(ebird))
 obs <- ebird[,c(1,2,5,9,10,11,12,31,41,42,43,44,46)]
 
 #export file to csv
-fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core)
+fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core, na = "NA")
 
 rm("obs")  # remove because it's a very large item and we're done with it
 
@@ -45,14 +45,14 @@ loc <- unique(loc)
 # there are still duplicated locations because some locations have records with
 # and without ATLASBLOCK; this removes those cases, keeping only the record with
 # ATLASBLOCK
-lid_blk <- loc[ATLASBLOCK != na_string, LOCALITYID]
-loc <- loc[(! LOCALITYID %in% lid_blk) | ATLASBLOCK != na_string]
+lid_blk <- loc[! is.na(ATLASBLOCK), LOCALITYID]
+loc <- loc[(! LOCALITYID %in% lid_blk) | ! is.na(ATLASBLOCK)]
 
 # should return 0
 anyDuplicated(loc$LOCALITYID)
 
 #export file to csv
-fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core)
+fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core, na = "NA")
 
 ### SUB
 
@@ -63,7 +63,7 @@ sub <- ebird[,c(24, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 45)]
 sub <- sub[!duplicated(sub$SAMPLINGEVENTIDENTIFIER), ]
 
 #export file to csv
-fwrite(sub, file = "sub.csv", quote = TRUE, nThread = n_core)
+fwrite(sub, file = "sub.csv", quote = TRUE, nThread = n_core, na = "NA")
 
 ### BRD
 
@@ -78,4 +78,4 @@ bird <- bird[!duplicated(bird$COMMONNAME), ]
 # bird <- unique(bird)
 
 #export file to csv
-fwrite(bird, file = "brd.csv", quote = TRUE, nThread = n_core)
+fwrite(bird, file = "brd.csv", quote = TRUE, nThread = n_core, na = "NA")
