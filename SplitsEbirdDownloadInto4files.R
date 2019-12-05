@@ -1,6 +1,6 @@
 # the time this script takes to run will vary with the number of cores available
 # and the amount of RAM. on a computer with 8 cores and 32 GB RAM, this took
-# just under a minute to run on a decade of data.
+# just over a minute to run on a decade of data.
 
 library(data.table)
 library(parallel)
@@ -40,7 +40,23 @@ rm("obs")  # remove because it's a very large item and we're done with it
 loc <- ebird[,c(1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27)]
 
 #remove rows with duplicated locations, leaving a file with only unique locations
-loc <- loc[!duplicated(loc$LOCALITYID), ]
+
+# this is a work around -- GLOBALUNIQUEIDENTIFIER is not being used for anything
+# in loc and should eventually be removed from loc in the database; this just
+# sets GLOBALUNIQUEIDENTIFIER to "1"
+loc[, GLOBALUNIQUEIDENTIFIER := "1"]
+
+# remove duplicated locations
+loc <- unique(loc)
+
+# there are still duplicated locations because some locations have records with
+# and without ATLASBLOCK; this removes those cases, keeping only the record with
+# ATLASBLOCK
+lid_blk <- loc[ATLASBLOCK != na_string, LOCALITYID]
+loc <- loc[(! LOCALITYID %in% lid_blk) | ATLASBLOCK != na_string]
+
+# should return 0
+anyDuplicated(loc$LOCALITYID)
 
 #export file to csv
 fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core)
