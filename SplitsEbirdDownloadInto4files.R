@@ -9,9 +9,9 @@ library(parallel)
 # number of cores used for file read/writes; one less than all cores available
 n_core <- detectCores() - 1
 
-#read in download from ebird, change this to your file name
+#read in download from ebird, change this to your file name; read in all columns
+#as character
 file <- "ebd_US-WI_rehwoo_199501_200012_relSep-2019.txt"
-# read in all columns as character
 ebird <- fread(file, quote = "", na.strings = "", nThread = n_core,
   check.names = TRUE, colClasses = "character")
 
@@ -79,6 +79,10 @@ bird <- ebird[,c(3, 4, 5, 6, 7, 8)]
 
 #remove rows with duplicated birds, leaving a file with only unique common names
 bird <- bird[!duplicated(bird$COMMONNAME), ]
+
+# note that the above potentially removes subspecies/form info; to keep this,
+# use the following instead
+# bird <- unique(bird)
 
 #export file to csv
 fwrite(bird, file = "brd.csv", quote = TRUE, nThread = n_core)
