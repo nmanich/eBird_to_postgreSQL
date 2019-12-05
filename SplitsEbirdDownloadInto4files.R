@@ -27,7 +27,7 @@ names(ebird) <- gsub("\\.", "", names(ebird))
 ### OBS
 
 #this selects specific columns for obs
-obs <- ebird[,c(1,2,5,9,10,11,12,24,30,31,41,42,43,44,46)]
+obs <- ebird[,c(1,2,5,9,10,11,12,31,41,42,43,44,46)]
 
 #export file to csv
 fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core)
