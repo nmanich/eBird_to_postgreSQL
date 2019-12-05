@@ -28,7 +28,6 @@ reason VARCHAR(50),
 species_comments VARCHAR);
 
 CREATE TABLE loc (
-global_unique_identifier VARCHAR(50) NOT NULL,
 country VARCHAR(50),
 country_code VARCHAR(10),
 state VARCHAR(70),
@@ -46,7 +45,6 @@ latitude DECIMAL(8,5),
 longitude DECIMAL(8,5));
 
 CREATE TABLE sub ( 
-global_unique_identifier  VARCHAR(50) NOT NULL,
 observation_date DATE,
 time_observations_started TIME,
 observer_id VARCHAR(15),
