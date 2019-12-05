@@ -40,7 +40,7 @@ rm("obs")  # remove because it's a very large item and we're done with it
 loc <- ebird[,c(13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27)]
 
 # remove duplicated locations
-locx <- unique(loc)
+loc <- unique(loc)
 
 # there are still duplicated locations because some locations have records with
 # and without ATLASBLOCK; this removes those cases, keeping only the record with
