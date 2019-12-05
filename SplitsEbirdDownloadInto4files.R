@@ -11,18 +11,18 @@ n_core <- detectCores() - 1
 
 #read in download from ebird, change this to your file name; read in all columns
 #as character
-file <- "ebd_US-WI_rehwoo_199501_200012_relSep-2019.txt"
+file <- "ebd_US-WI_yelrai_201410_201912_relSep-2019.txt"
 ebird <- fread(file, quote = "", na.strings = "", nThread = n_core,
-  check.names = TRUE, colClasses = "character")
+               check.names = TRUE, colClasses = "character")
 
 #this removes dots from column names, which were spaces
 names(ebird) <- gsub("\\.", "", names(ebird))
 
-#change NAs to blanks
-na_string <- " "  # NAs will be converted to this string
-for (j in seq_along(ebird)) {
-  set(ebird, which(is.na(ebird[[j]])), j, na_string)
-}
+#Code for if you wanted to change NAs to blanks. But there is some utility to keeping them as nulls for the database
+#na_string <- " "  # NAs will be converted to this string
+#for (j in seq_along(ebird)) {
+#  set(ebird, which(is.na(ebird[[j]])), j, na_string)
+#}
 
 ### OBS
 
@@ -37,17 +37,10 @@ rm("obs")  # remove because it's a very large item and we're done with it
 ### LOC
 
 #this selects specific columns for loc
-loc <- ebird[,c(1, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27)]
-
-#remove rows with duplicated locations, leaving a file with only unique locations
-
-# this is a work around -- GLOBALUNIQUEIDENTIFIER is not being used for anything
-# in loc and should eventually be removed from loc in the database; this just
-# sets GLOBALUNIQUEIDENTIFIER to "1"
-loc[, GLOBALUNIQUEIDENTIFIER := "1"]
+loc <- ebird[,c(13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27)]
 
 # remove duplicated locations
-loc <- unique(loc)
+locx <- unique(loc)
 
 # there are still duplicated locations because some locations have records with
 # and without ATLASBLOCK; this removes those cases, keeping only the record with
