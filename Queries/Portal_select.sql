@@ -7,8 +7,6 @@ The COPY part outside parentheses exports to csv.
 The WHERE part is your specific query of the data
  */
 
-SET CLIENT_ENCODING TO 'utf8';
-
 -- remove usr. and noc. files if you don't have those tables
 
 SET CLIENT_ENCODING TO 'utf8';
