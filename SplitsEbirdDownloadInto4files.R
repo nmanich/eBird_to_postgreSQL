@@ -17,14 +17,6 @@ ebird <- fread(file, quote = "", na.strings = "", nThread = n_core,
 #this removes dots from column names, which were spaces
 names(ebird) <- gsub("\\.", "", names(ebird))
 
-#Code for if you wanted to change NAs to blanks. But there is some utility to keeping them as nulls for the database
-na_string <- " "  # NAs will be converted to this string
-#for (j in seq_along(ebird)) {
-#  set(ebird, which(is.na(ebird[[j]])), j, na_string)
-#}
-#replace the comparison to na_string to ! is.na(ATLASBLOCK).
-
-
 ### OBS
 
 #this selects specific columns for obs
