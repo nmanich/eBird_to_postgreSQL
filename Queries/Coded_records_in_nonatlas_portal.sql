@@ -52,7 +52,7 @@ SELECT
 	usr.last_name,
 	usr.first_name,
 	sub.trip_comments,
-	obs.species_comments
+	obs.species_comments,
 	noc.is_noc
 
 FROM      obs LEFT JOIN brd
