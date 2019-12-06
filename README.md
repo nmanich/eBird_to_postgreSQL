@@ -10,4 +10,4 @@ The file (ERD...; see below) shows how these tables connect to each other and wh
 
 The Query folder contains a variety of queries to grab various things from the database. Would love it if people can add files here if you have some that have been working for you. 
 
-![erd](https://github.com/nmanich/eBird_to_postgreSQL/blob/master/ERD5.png)
+![erd](https://github.com/nmanich/eBird_to_postgreSQL/blob/master/ERD6.png)
