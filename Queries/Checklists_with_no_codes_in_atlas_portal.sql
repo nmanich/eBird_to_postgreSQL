@@ -2,6 +2,8 @@
 --This script exports out checklists with no code within the atlas portal.
 --I don't have script written to produce the codedstatus table, so for now for this function I'm using something under small R scripts.
 
+--BEFORE CHECKING FOR CHECKLISTS WITH NO CODES, NEED TO MERGE IN SENSITIVE SPECIES, AND UN 0s.
+
 SET CLIENT_ENCODING TO 'utf8';
 
 COPY (
