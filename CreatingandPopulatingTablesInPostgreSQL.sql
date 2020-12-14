@@ -22,8 +22,8 @@ subpsecies_scientific_name VARCHAR(100));
 -- OPTIONAL USER TABLE, user info not available in download, request from ebird central
 CREATE TABLE usr (
 email VARCHAR(50),
-last_name VARCHAR(60),
-first_name VARCHAR(60), 
+last_name VARCHAR(80),
+first_name VARCHAR(80), 
 observer_id VARCHAR(15) UNIQUE NOT NULL PRIMARY KEY);
 
 CREATE TABLE loc (
