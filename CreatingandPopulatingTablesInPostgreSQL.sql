@@ -115,7 +115,8 @@ COPY SUB FROM 'C:\Users\nicho\Desktop\database\dec6test\sub.csv' DELIMITER ',' C
 COPY OBS FROM 'C:\Users\nicho\Desktop\database\dec6test\obs.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 --COPY NOC FROM 'C:\Users\nicho\Desktop\database\dec5test\noc.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
-                   
+
+--will have to process R script before you can add URL, see Shiny code
 COPY URL FROM 'C:\Users\nicho\Desktop\database\dec6test\url.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
                    
 COPY BNM FROM 'C:\Users\nicho\Desktop\database\dec6test\bnm.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
