@@ -79,6 +79,16 @@ species_comments VARCHAR);
 --CREATE TABLE noc (
 --sampling_event_identifier VARCHAR(15) UNIQUE NOT NULL PRIMARY KEY,
 --is_noc VARCHAR(9));
+                  
+-- OPTIONAL CLICKABLE HTML URL TO EBIRD CHECKLIST (SEE SHINY APP CODE)
+CREATE TABLE url (
+global_unique_identifier VARCHAR(50) UNIQUE NOT NULL PRIMARY KEY REFERENCES obs (global_unique_identifier),
+checklistlink VARCHAR(110));
+
+-- OPTIONAL BLOCK NAMES, request from ebird central
+CREATE TABLE bnm (
+atlas_block VARCHAR(10) NOT NULL PRIMARY KEY REFERENCES loc (atlas_block),
+blockname VARCHAR(100));
 
 -- add hiddenrecords, request from ebird central
                                    
