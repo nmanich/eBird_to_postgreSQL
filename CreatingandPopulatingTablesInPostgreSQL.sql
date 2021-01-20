@@ -75,7 +75,9 @@ reviewed BOOLEAN,
 reason VARCHAR(50),
 species_comments VARCHAR);
 
--- OPTIONAL NOCTURNAL TAGS ON CHECKLIST, request from ebird central
+-- OPTIONALADD-ONS BELOW THIS POINT
+                  
+-- NOCTURNAL TAGS ON CHECKLIST, request from ebird central
 --CREATE TABLE noc (
 --sampling_event_identifier VARCHAR(15) UNIQUE NOT NULL PRIMARY KEY,
 --is_noc VARCHAR(9));
@@ -87,10 +89,12 @@ checklistlink VARCHAR(110));
 
 -- OPTIONAL BLOCK NAMES, request from ebird central
 CREATE TABLE bnm (
-atlas_block VARCHAR(10) NOT NULL PRIMARY KEY REFERENCES loc (atlas_block),
-blockname VARCHAR(100));
+atlas_block VARCHAR(10) NOT NULL UNIQUE PRIMARY KEY,
+block_name VARCHAR(100));
 
 -- add hiddenrecords, request from ebird central
+                   
+-- add invalid records, request from ebird central
                                    
 -- add taxonomy (optional, brings in sort by taxon option or use of 6-letter code as better key for birds)
 
@@ -111,3 +115,8 @@ COPY SUB FROM 'C:\Users\nicho\Desktop\database\dec6test\sub.csv' DELIMITER ',' C
 COPY OBS FROM 'C:\Users\nicho\Desktop\database\dec6test\obs.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 --COPY NOC FROM 'C:\Users\nicho\Desktop\database\dec5test\noc.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
+                   
+COPY URL FROM 'C:\Users\nicho\Desktop\database\dec6test\url.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
+                   
+COPY BNM FROM 'C:\Users\nicho\Desktop\database\dec6test\bnm.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
+                   
