@@ -1,4 +1,4 @@
--- Pulls out records for "obsposs treatment" (where observed and possible are considered a distinct category with "breeding category level 1.5" (like "Other Observations" of Ohio atlas))
+-- Pulls out records for obsposs treatment (where observed and possible are considered a distinct category with "breeding category level 1.5" (like 'Other Observations' of Ohio atlas))
 -- Remember: *cut down to only EBIRD_ATL_WI records*
 -- Pull Whooping Crane separately, as it is sensitive: 5/15 to 7/15
 
@@ -30,7 +30,7 @@ SELECT
 	loc.usfws_code,
 	loc.atlas_block,
 	loc.locality,
-  sub.locality_id,
+        sub.locality_id,
 	loc.locality_type,
 	loc.latitude,
 	loc.longitude,
@@ -110,10 +110,340 @@ OR
 (obs.common_name = 'Laughing Gull' AND obs.breeding_category = 'C2')
 )
 
+OR
 
+(
+obs.common_name = 'Ring-billed Gull'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-05-15' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-05-15' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-05-15' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-05-15' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-05-15' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Ring-billed Gull' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Herring Gull'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-05-15' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-05-15' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-05-15' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-05-15' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-05-15' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Herring Gull' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Great Black-backed Gull'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-05-15' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-05-15' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-05-15' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-05-15' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-05-15' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Great Black-backed Gull' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Caspian Tern'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-08' AND sub.observation_date <= '2015-07-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-08' AND sub.observation_date <= '2016-07-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-08' AND sub.observation_date <= '2017-07-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-08' AND sub.observation_date <= '2018-07-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-08' AND sub.observation_date <= '2019-07-15'))
+
+OR
+
+(obs.common_name = 'Caspian Tern' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Common Tern'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-08' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-08' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-08' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-08' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-08' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Common Tern' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = $$Forster's Tern$$
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = $$Forster's Tern$$ AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Double-crested Cormorant'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-05-15' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-05-15' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-05-15' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-05-15' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-05-15' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Double-crested Cormorant' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'American White Pelican'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'American White Pelican' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Great Blue Heron'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-05-15' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-05-15' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-05-15' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-05-15' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-05-15' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Great Blue Heron' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Great Egret'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Great Egret' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Snowy Egret'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Snowy Egret' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Cattle Egret'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Cattle Egret' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Black-crowned Night-Heron'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Black-crowned Night-Heron' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Yellow-crowned Night-Heron'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Yellow-crowned Night-Heron' AND obs.breeding_category = 'C2')
+)
+
+OR
+
+(
+obs.common_name = 'Turkey Vulture'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-08-15'))
+
+OR
+
+(obs.common_name = 'Turkey Vulture' AND obs.breeding_category = 'C2')
+)
 
 
 )
 
-TO 'C:\Users\nicho\Desktop\Apr2021Database\spsatest23.csv'
+TO 'C:\Users\nicho\Desktop\Apr2021Database\obsposs_records.csv'
 WITH (FORMAT CSV, HEADER, DELIMITER ',');
+
+
