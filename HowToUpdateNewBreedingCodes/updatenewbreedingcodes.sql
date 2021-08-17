@@ -2,7 +2,10 @@
 This is how you overwrite old breeding codes with changed breeding codes.
  */
 
---make an update csv with these 3 columns, the obsid you want to change, and the new breeding code and category
+--make an update csv with 3 columns: the obsid you want to change, and the new breeding code and category
+--column names listed below
+
+--make a table structure for the new code data
 CREATE TABLE newcodes (
 newcode_global_unique_identifier VARCHAR(50) UNIQUE NOT NULL PRIMARY KEY,
 newbreeding_code VARCHAR(2),
