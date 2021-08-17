@@ -1,6 +1,6 @@
 /* 
 As written this essentially rebuids the EBD (eBird Database) original download file. I am using this like a master query
-because it joins the major tables. You should be able to delete columns from this that you do not need.
+because it joins the major tables. You should be able to delete columns from this that you do not need. This version also includes the usr table with user names.
 */
 
 /* 
