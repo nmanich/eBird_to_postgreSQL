@@ -10,7 +10,11 @@ n_core <- detectCores() - 1
 
 #read in download from ebird, change this to your file name; read in all columns
 #as character
-file <- "ebd_US-WI_201801_201812_relSep-2019.txt"
+file <- "ebd_US-WI_201501_201912_relJan-2022.txt"
+
+# OPTIONAL, this limits the file to only atlas portal records
+file  <- file[file$PROJECT.CODE == "EBIRD_ATL_WI", ]
+
 ebird <- fread(file, quote = "", na.strings = "", nThread = n_core,
                check.names = TRUE, colClasses = "character")
 
@@ -20,7 +24,7 @@ names(ebird) <- gsub("\\.", "", names(ebird))
 ### OBS
 
 #this selects specific columns for obs
-obs <- ebird[,c(1,2,5,9,10,11,12,13,32,42,43,44,45,47)]
+obs <- ebird[,c(1,2,6,10,11,12,13,14,15,34,44,45,46,47,49)]
 
 #export file to csv
 fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core, na = "NA")
@@ -30,7 +34,7 @@ rm("obs")  # remove because it's a very large item and we're done with it
 ### LOC
 
 #this selects specific columns for loc
-loc <- ebird[,c(14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28)]
+loc <- ebird[,c(16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30)]
 
 # remove duplicated locations
 loc <- unique(loc)
@@ -50,7 +54,7 @@ fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core, na = "NA")
 ### SUB
 
 #this selects specific columns for sub
-sub <- ebird[,c(25, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 46)]
+sub <- ebird[,c(27, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 48)]
 
 #remove rows with duplicated checklists, leaving a file with only unique checklists
 sub <- sub[!duplicated(sub$SAMPLINGEVENTIDENTIFIER), ]
@@ -61,7 +65,7 @@ fwrite(sub, file = "sub.csv", quote = TRUE, nThread = n_core, na = "NA")
 ### BRD
 
 #this selects specific columns for bird
-bird <- ebird[,c(3, 4, 5, 6, 7, 8)]
+bird <- ebird[,c(3, 4, 5, 6, 7, 8, 9)]
 
 #remove rows with duplicated birds, leaving a file with only unique common names
 bird <- bird[!duplicated(bird$COMMONNAME), ]
