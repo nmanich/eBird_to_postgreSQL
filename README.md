@@ -10,6 +10,6 @@ IN PROGRESS: There are supplementary and optional tables for non-EBD data in the
 
 The Query folder contains a variety of queries to grab various things from the database. Would love it if people can add files here if you have some that have been working for you. I have a master one based on recreating the EBD that I find helpful - it's easier for me personally to delete columns from this I don't need than to craft new queries from scratch.
 
-There's also a folder for the old versions of Splits.. and Creating... back before the eBird column headers changed with the release of the April 2021 EBD. This probably is not needed for most people, but I'm hesitant to erase them in case I need them!
+There are archive folders with old versions of Splits.. and Creating... as these files change when columns are added to the EBD. This probably is not needed for most people, but I'm hesitant to erase them in case I need them!
 
 ![erd](https://github.com/nmanich/eBird_to_postgreSQL/blob/master/ERD6.png)
