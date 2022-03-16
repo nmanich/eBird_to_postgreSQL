@@ -66,7 +66,7 @@ CREATE TABLE obs (
 global_unique_identifier VARCHAR(50) UNIQUE NOT NULL PRIMARY KEY,
 last_edited_date TIMESTAMP,
 common_name VARCHAR(70) REFERENCES brd (common_name),
-exotic_code CHAR(1),
+exotic_code CHAR(2),
 observation_count VARCHAR(10),
 breeding_code VARCHAR(2),
 breeding_category CHAR(2),
@@ -97,10 +97,6 @@ CREATE TABLE bnm (
 atlas_block VARCHAR(10) NOT NULL UNIQUE PRIMARY KEY,
 block_name VARCHAR(100));
 
--- add hiddenrecords, request from ebird central
-                   
--- add invalid records, request from ebird central
-                                   
 -- add taxonomy? (optional, brings in sort by taxon option or use of 6-letter code as better key for birds)
  */
  
@@ -108,20 +104,27 @@ block_name VARCHAR(100));
 This populates the tables with data. Change path to the proper files. In order for the program to be allowed access, you need to find file or folder, then go to: properties, security, Edit, Add "Everyone" as a user, then allow all permissions to Everyone. Second word below is the name of the table we are copying into. These csv files are  created from the eBird download with the R code, except for user which is prepared separately.
  */
 
+-- Troubleshooting
+-- May have to open in excel and save files as UTF-8 CSVs. There is an alternate way to export them
+--       as UTF-8 in the split file.
+-- If a csv is misbehaving, create a new excel file and copy the data in there clean and resave.
+-- Column effort_area_ha was returning an error when NA was the first value, if you sort by number in 
+--       excel to make sure it is starting with a number, then it then works.
+
 COPY BRD FROM 'C:\Users\nicho\Desktop\Jan2022Database\brd.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
---make sure userIDs say obsr123 not user123 (they are listed as obsr in the EBD but user on some back-end exports)
+--make sure userIDs say obsr123 not user123 (they are listed as obsr in the EBD but user or obs on some back-end exports)
 COPY USR FROM 'C:\Users\nicho\Desktop\Jan2022Database\usr.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 COPY LOC FROM 'C:\Users\nicho\Desktop\Jan2022Database\loc.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 --optional block name table
-COPY BNM FROM 'C:\Users\nicho\Desktop\Jan2022Database\bnm.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
+--COPY BNM FROM 'C:\Users\nicho\Desktop\Jan2022Database\bnm.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 COPY SUB FROM 'C:\Users\nicho\Desktop\Jan2022Database\sub.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 --will have to process R script (Shiny folder) before you can add URL
-COPY URL FROM 'C:\Users\nicho\Desktop\Jan2022Database\url.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
+--COPY URL FROM 'C:\Users\nicho\Desktop\Jan2022Database\url.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
 
 --obs is the largest table so this next line can take quite a while to load if the file is large               
 COPY OBS FROM 'C:\Users\nicho\Desktop\Jan2022Database\obs.csv' DELIMITER ',' CSV HEADER NULL AS 'NA';
