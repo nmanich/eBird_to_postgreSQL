@@ -4,6 +4,9 @@
 
 #NOTE: there are 2 versions of this, depending on the headers you're loading in.
 
+#NOTE: there are also 2 ways to export the table, one providing UTF-8 csvs, though 
+# the other way is faster
+
 
 #####STRAIGHT EBD COLUMN HEADERS
 
@@ -31,8 +34,11 @@ SPECIES.COMMENTS)]
 
 head(obs)
 
-#export file to csv
-fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core, na = "NA")
+#this is the faster way to export file to csv
+#fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core, na = "NA")
+
+#this is the slower way to export filt to csv but it uses UTF-8 which we're using in postgres
+write.csv(obs,"obs.csv",fileEncoding = "UTF-8",row.names=FALSE)
 
 rm("obs")  # remove because it's a very large item and we're done with it
 
@@ -48,8 +54,8 @@ loc <- loc[!duplicated(loc$LOCALITY.ID), ]
 # should return 0
 anyDuplicated(loc$LOCALITY.ID)
 
-#export file to csv
-fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core, na = "NA")
+#fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core, na = "NA") #faster
+write.csv(loc,"loc.csv",fileEncoding = "UTF-8",row.names=FALSE) #as UTF-8
 
 ### SUB
 
@@ -61,7 +67,8 @@ ALL.SPECIES.REPORTED, GROUP.IDENTIFIER, TRIP.COMMENTS)]
 sub <- sub[!duplicated(sub$SAMPLING.EVENT.IDENTIFIER), ]
 
 #export file to csv
-fwrite(sub, file = "sub.csv", quote = TRUE, nThread = n_core, na = "NA")
+#fwrite(sub, file = "sub.csv", quote = TRUE, nThread = n_core, na = "NA") #faster
+write.csv(sub,"sub.csv",fileEncoding = "UTF-8",row.names=FALSE) #as UTF-8
 
 ### BRD
 
@@ -76,7 +83,8 @@ bird <- bird[!duplicated(bird$COMMON.NAME), ]
 # bird <- unique(bird)
 
 #export file to csv
-fwrite(bird, file = "brd.csv", quote = TRUE, nThread = n_core, na = "NA")
+# fwrite(bird, file = "brd.csv", quote = TRUE, nThread = n_core, na = "NA") #faster
+write.csv(bird,"brd.csv",fileEncoding = "UTF-8",row.names=FALSE) #as UTF-8
 
 ##############################################################################
 
@@ -103,8 +111,11 @@ ebird  <- ebird[ebird$project_code == "EBIRD_ATL_WI", ]
 #this selects specific columns for obs
 obs <- ebird[,c("global_unique_identifier", "last_edited_date", "common_name", "exotic_code", "observation_count", "breeding_code", "breeding_category", "behavior_code", "age_sex", "sampling_event_identifier", "has_media", "approved", "reviewed", "reason", "species_comments")]
 
-#export file to csv
-fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core, na = "NA")
+#this is the faster way to export file to csv
+#fwrite(obs, file = "obs.csv", quote = TRUE, nThread = n_core, na = "NA")
+
+#this is the slower way to export filt to csv but it uses UTF-8 which we're using in postgres
+write.csv(obs,"obs.csv",fileEncoding = "UTF-8",row.names=FALSE)
 
 rm("obs")  # remove because it's a very large item and we're done with it
 
@@ -121,7 +132,8 @@ loc <- loc[!duplicated(loc$locality_id), ]
 anyDuplicated(loc$locality_id)
 
 #export file to csv
-fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core, na = "NA")
+#fwrite(loc, file = "loc.csv", quote = TRUE, nThread = n_core, na = "NA") #faster
+write.csv(loc,"loc.csv",fileEncoding = "UTF-8",row.names=FALSE) #as UTF-8
 
 ### SUB
 
@@ -132,7 +144,8 @@ sub <- ebird[,c("locality_id", "observation_date", "time_observations_started", 
 sub <- sub[!duplicated(sub$sampling_event_identifier), ]
 
 #export file to csv
-fwrite(sub, file = "sub.csv", quote = TRUE, nThread = n_core, na = "NA")
+#fwrite(sub, file = "sub.csv", quote = TRUE, nThread = n_core, na = "NA") #faster
+write.csv(sub,"sub.csv",fileEncoding = "UTF-8",row.names=FALSE) #as UTF-8
 
 ### BRD
 
@@ -147,4 +160,5 @@ bird <- bird[!duplicated(bird$common_name), ]
 # bird <- unique(bird)
 
 #export file to csv
-fwrite(bird, file = "brd.csv", quote = TRUE, nThread = n_core, na = "NA")
+# fwrite(bird, file = "brd.csv", quote = TRUE, nThread = n_core, na = "NA") #faster
+write.csv(bird,"brd.csv",fileEncoding = "UTF-8",row.names=FALSE) #as UTF-8
