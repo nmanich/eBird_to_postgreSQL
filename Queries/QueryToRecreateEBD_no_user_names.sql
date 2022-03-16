@@ -14,14 +14,16 @@ SET CLIENT_ENCODING TO 'utf8';
 
 COPY (
 SELECT  
-	obs.global_unique_identifier,
+obs.global_unique_identifier,
 	obs.last_edited_date,
 	brd.taxonomic_order,
 	brd.category,
+	brd.taxon_concept_id,
 	obs.common_name,
 	brd.scientific_name,
 	brd.subspecies_common_name,
 	brd.subpsecies_scientific_name,
+	obs.exotic_code,
 	obs.observation_count,
 	obs.breeding_code,
 	obs.breeding_category,
