@@ -18,10 +18,12 @@ SELECT
 	obs.last_edited_date,
 	brd.taxonomic_order,
 	brd.category,
+	brd.taxon_concept_id,
 	obs.common_name,
 	brd.scientific_name,
 	brd.subspecies_common_name,
 	brd.subpsecies_scientific_name,
+	obs.exotic_code,
 	obs.observation_count,
 	obs.breeding_code,
 	obs.breeding_category,
@@ -72,11 +74,12 @@ FROM      obs LEFT JOIN brd
               LEFT JOIN loc
             ON sub.locality_id = loc.locality_id
    	     LEFT JOIN usr
-            ON sub.observer_id = usr.observer_id          
+            ON sub.observer_id = usr.observer_id
+
+WHERE (obs.common_name = 'American Robin' AND obs.breeding_category = 'C2')
+         
            
 )
 
-TO 'C:\Users\nicho\Desktop\database\dec6test\2018atlasdata.csv'
+TO 'C:\Users\nicho\Desktop\database\dec6test\AMROtest.csv'
 WITH (FORMAT CSV, HEADER, DELIMITER ',');
-
-
