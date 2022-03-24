@@ -76,7 +76,7 @@ FROM      obs LEFT JOIN brd
    	     LEFT JOIN usr
             ON sub.observer_id = usr.observer_id
 
-WHERE obs.sampling_event_identifier NOT IN ('S59263158', 'S58913729','S59665922') -- add subids to remove here
+WHERE obs.sampling_event_identifier NOT IN ('S59263158', 'S58913729', 'S59665922') -- add subids to remove here
 AND obs.sampling_event_identifier IS NOT NULL
            
 )
