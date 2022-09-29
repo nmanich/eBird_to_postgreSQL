@@ -1,6 +1,7 @@
 -- Pulls out records for obsposs treatment (where observed and possible are considered a distinct category with "breeding category level 1.5" (like 'Other Observations' of Ohio atlas))
 -- Remember: *cut down to only EBIRD_ATL_WI records*
--- Pull Whooping Crane separately, as it is sensitive: 5/15 to 7/15
+
+-- ****Pull Whooping Crane separately, as it is sensitive: 5/1 to 7/31!!
 
 SET CLIENT_ENCODING TO 'utf8';
 
@@ -440,6 +441,69 @@ OR
 (obs.common_name = 'Turkey Vulture' AND obs.breeding_category = 'C2')
 )
 
+
+(
+obs.common_name = 'Bald Eagle'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-08-15')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-08-15'))
+
+OR
+
+(obs.common_name = 'Bald Eagle' AND obs.breeding_category = 'C2')
+)
+
+
+(
+obs.common_name = 'Osprey'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-06-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-06-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-06-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-06-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-06-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Osprey' AND obs.breeding_category = 'C2')
+)
+
+-- PULL WHOOPING CRANE SEPARATELY AS A SENSITIVE SPECIES
+
+(
+obs.common_name = 'Whooping Crane'
+
+AND 
+
+(((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2015-05-01' AND sub.observation_date <= '2015-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2016-05-01' AND sub.observation_date <= '2016-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2017-05-01' AND sub.observation_date <= '2017-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2018-05-01' AND sub.observation_date <= '2018-07-31')
+
+OR ((obs.breeding_category is null OR obs.breeding_category = 'C1') AND sub.observation_date >= '2019-05-01' AND sub.observation_date <= '2019-07-31'))
+
+OR
+
+(obs.common_name = 'Whooping Crane' AND obs.breeding_category = 'C2')
+)
 
 )
 
